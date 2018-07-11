@@ -1,18 +1,10 @@
 pipeline {
-def dockerHome = tool 'myDocker'
-        def mavenHome  = tool 'mvn'
-        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
-    agent {
-        docker { image 'node:7-alpine' }
-    }
+    agent { dockerfile true }
     stages {
-
-        
-
-
         stage('Test') {
             steps {
                 sh 'node --version'
+                sh 'svn --version'
             }
         }
     }
