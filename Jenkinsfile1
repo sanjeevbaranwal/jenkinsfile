@@ -3,6 +3,7 @@ stage('Initialize'){
         def dockerHome = tool 'myDocker'
         def mavenHome  = tool 'M3'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+        }
     agent { dockerfile true }
     stages {
         stage('Test') {
