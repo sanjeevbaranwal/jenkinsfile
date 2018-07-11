@@ -15,7 +15,7 @@ node {
    // **       in the global configuration.
    def mvnHome = tool 'mvn'
    def dockerHome = tool 'myDocker'
-   env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+   
   
     
 
@@ -24,7 +24,7 @@ node {
    // map artifacts to Jenkins builds
    sh "${mvnHome}/bin/mvn versions:set -DnewVersion=${env.BUILD_NUMBER}"
    sh "${mvnHome}/bin/mvn package"
-
+    sh "${dockerHome}/bin/docker build -t Dockerfile"
    stage 'test'
    parallel 'test': {
      sh "${mvnHome}/bin/mvn test; sleep 2;"
