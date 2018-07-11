@@ -16,7 +16,7 @@ node {
    def mvnHome = tool 'mvn'
    def dockerHome = tool 'myDocker'
    env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
-  
+  docker build -t 681bcfc2bbe2229dda3fb505fd3a733f35a580f3 -f Dockerfile
     
 
    stage 'build'
@@ -36,7 +36,7 @@ node {
    archive 'target/*.jar'
 }
 
- agent { dockerfile true }
+ 
 node {
    stage 'deploy Canary'
    sh 'echo "write your deploy code here"; sleep 5;'
