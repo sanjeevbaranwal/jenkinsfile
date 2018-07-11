@@ -1,13 +1,14 @@
 pipeline {
+def dockerHome = tool 'myDocker'
+        def mavenHome  = tool 'mvn'
+        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
     agent {
         docker { image 'node:7-alpine' }
     }
     stages {
-     stage('Initialize'){
-        def dockerHome = tool 'myDocker'
-        def mavenHome  = tool 'mvn'
-        env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
-    }
+
+        
+
 
         stage('Test') {
             steps {
