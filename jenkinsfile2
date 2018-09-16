@@ -1,5 +1,3 @@
-deploy toprod
-
 pipeline {
     agent any
 
@@ -27,6 +25,9 @@ stages{
                 }
             }
         }
+
+Stage ('ansible')
+sh 'ansible --version'
 
         stage ('Deployments'){
             parallel{
