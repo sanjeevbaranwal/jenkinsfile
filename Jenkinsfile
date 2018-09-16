@@ -24,7 +24,7 @@ node {
    stage 'Ansible Test'
    // set the version of the build artifact to the Jenkins BUILD_NUMBER so you can
    // map artifacts to Jenkins builds
-   sh "Ansible --version"
+   ansible --version
    
    stage 'test'
    parallel 'test': {
